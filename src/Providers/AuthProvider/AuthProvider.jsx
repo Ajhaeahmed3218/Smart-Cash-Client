@@ -1,4 +1,4 @@
-import { getAuth ,createUserWithEmailAndPassword, updateProfile, onAuthStateChanged, signOut, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { getAuth ,createUserWithEmailAndPassword,  onAuthStateChanged, signOut, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 // import app from "../firebase/firebase.config";
 import { GoogleAuthProvider } from "firebase/auth";
@@ -23,16 +23,25 @@ const AuthProvider = ({ children }) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     }
+
+    // const createUser =  ({
+    //     email: 'user@example.com',
+    //     emailVerified: false,
+    //     phoneNumber: '+11234567890',
+    //     password: 'secretPassword',
+    //     displayName: 'John Doe',
+    //     photoURL: 'http://www.example.com/12345678/photo.png',
+    //     disabled: false,
+    //   })
     // update user 
     const upDateUserProfile = (name, photoURL) =>{
         setLoading(true)
         return  updateProfile(auth.currentUser, {
-              displayName: name ,
-              photoURL: photoURL
-            })
+            displayName: name, photoURL: photoURL
+          })
             
       }
-    
+      
       // Sign Useer
     const login = (email, password) => {
         setLoading(true)

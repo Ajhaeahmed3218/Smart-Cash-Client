@@ -4,7 +4,7 @@ import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 import { FaRegUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
     const navLink = <>
         <li><NavLink to={"/"} className={({ isActive }) => isActive ? " border-2 border-none bg-[#bdcbf4] py-3 px-5 font-bold rounded-xl text-orange-600" : "font-bold py-3 px-5 lg:text-black "}>Home</NavLink></li>
 
@@ -80,7 +80,7 @@ const Navbar = () => {
                 </div>
 
                 {user ?
-                    <div className="dropdown dropdown-end ">
+                    <div  className="dropdown dropdown-end ">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
                                 <img
@@ -98,7 +98,7 @@ const Navbar = () => {
                                 </a>
                             </li>
                             <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
+                            <li><a onClick={() => logOut() } >Logout</a></li>
                         </ul>
                     </div> :
                     <Link to={'/register'} className="text-3xl"><FaRegUserCircle />
