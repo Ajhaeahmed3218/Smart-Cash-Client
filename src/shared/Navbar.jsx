@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
     const navLink = <>
-        <li><NavLink to={"/"} className={({ isActive }) => isActive ? " border-2 border-none bg-[#bdcbf4] py-3 px-5 font-bold rounded-xl text-pink-500" : "font-bold py-3 px-5 lg:text-black "}>Home</NavLink></li>
+        <li><NavLink to={"/"} className={({ isActive }) => isActive ? " border-2 border-none bg-[#bdcbf4] py-3 px-5 font-bold rounded-xl text-orange-600" : "font-bold py-3 px-5 lg:text-black "}>Home</NavLink></li>
 
         <li><NavLink to={"/membership"} className={({ isActive }) => isActive ? " border-2 border-none bg-[#bdcbf4]  py-3 px-5 font-bold rounded-xl" : "font-bold py-3 px-5 lg:text-bla"}>About</NavLink></li>
 
@@ -12,7 +12,7 @@ const Navbar = () => {
 
     </>
     return (
-        <div className="navbar bg-base-100  dm-sans fixed z-30  lg:px-36">
+        <div className="navbar bg-base-100  dm-sans fixed z-30  lg:px-36 bg-transparent">
         <div className="">
             <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -36,7 +36,7 @@ const Navbar = () => {
                 </ul>
             </div>
 
-            <a className=" text-2xl lg:mr-16 md:mr-0 font-extrabold text-[#bdcbf4]">Smart<span className="text-pink-500">Cash</span></a>
+            <a className=" text-2xl lg:mr-16 md:mr-0 font-extrabold text-[#1a3070]">Smart<span className="text-orange-600">Cash</span></a>
         </div>
         <div className="navbar-start hidden lg:flex ">
             <ul className="menu menu-horizontal lg:px-1 lg:gap-6 md:gap-0">
