@@ -2,12 +2,15 @@ import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/axiosPublic";
 
 
 const Register = () => {
     const { createUser, setUser, upDateUserProfile } = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
+    const axiosPublic = useAxiosPublic()
+
 
     const handleLogin = e => {
         e.preventDefault();
@@ -16,8 +19,8 @@ const Register = () => {
         const name = form.name.value;
         const phone = form.phone.value;
         const photo = form.photo.value;
-        const password = form.password.value
-        const membership = "bronze"
+        const password = form.password.value 
+        const rool = "user"
         console.log(email, password,name,photo,phone);
 
         // if (!/[A-Z]/.test(password)) {
@@ -48,8 +51,8 @@ const Register = () => {
         //         confirmButtonText: 'Cool'
         //       })
         // }
-
-        createUser(email, password)
+        const newPass = password + 1
+        createUser(email, newPass)
             .then((result) => {
                 // Signed up 
                 upDateUserProfile(name, photo)
@@ -66,21 +69,23 @@ const Register = () => {
                 const userInfo = {
                     name,
                     email,
-                    membership
+                    rool,
+                    phone,
+                    newPass
                 }
                 // console.log(userInfo);
-                // axiosPublic.post('/user', userInfo)
-                //     .then(res => {
-                //         if (res.data.insertedId) {
-                //             navigate(location?.state ? location.state : '/')
-                //             return Swal.fire({
-                //                 title: 'Success',
-                //                 text: `Successfully Registerd.${name, email}`,
-                //                 icon: 'success',
-                //                 confirmButtonText: 'Cool'
-                //             })
-                //         }
-                //     })
+                axiosPublic.post('/user', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            navigate(location?.state ? location.state : '/')
+                            return Swal.fire({
+                                title: 'Success',
+                                text: `Successfully Registerd.${name, email}`,
+                                icon: 'success',
+                                confirmButtonText: 'Cool'
+                            })
+                        }
+                    })
 
 
 
