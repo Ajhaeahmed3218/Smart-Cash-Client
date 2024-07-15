@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
-    const {googleSignin, signIn} = useContext(AuthContext)
+    const { login} = useContext(AuthContext)
     const navigate = useNavigate()
     const location = useLocation()
     const handleLogin = e => {
@@ -14,9 +14,9 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value
-        // console.log(email, password);
+        console.log(email, password);
 
-        signIn(email, password)
+        login(email, password)
             .then(result => {
                 
                 navigate(location?.state ? location.state : '/')
@@ -51,7 +51,7 @@ const Login = () => {
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
                 <div className="mr-12 w-1/2">
-                    <img src="https://i.ibb.co/Ytw8jTm/authentication2-1.jpg" alt="" />
+                    <img src="smart-login.jpg" alt="" />
                 </div>
                 <div className="card card-body shrink-0 w-full max-w-sm shadow-2xl bg-slate-400">
                     <h1 className="text-4xl font-semibold text-center mt-5">Login </h1>
