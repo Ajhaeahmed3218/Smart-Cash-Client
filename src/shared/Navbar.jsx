@@ -13,6 +13,8 @@ const Navbar = () => {
         <li><NavLink to={"/login"} className={({ isActive }) => isActive ? " border-2 border-none bg-[#bdcbf4]  py-3 px-5 font-bold rounded-xl" : "font-bold py-3 px-5 lg:text-black"}>Servises</NavLink></li>
 
         <li><NavLink to={"/login"} className={({ isActive }) => isActive ? " border-2 border-none bg-[#bdcbf4]  py-3 px-5 font-bold rounded-xl" : "font-bold py-3 px-5 lg:text-black"}>Contact</NavLink></li>
+        
+        { user && <li><NavLink to={"dashbord"} className={({ isActive }) => isActive ? " border-2 border-none bg-[#bdcbf4]  py-3 px-5 font-bold rounded-xl" : "font-bold py-3 px-5 lg:text-black"}>Dashbord</NavLink></li>}
 
     </>
     return (

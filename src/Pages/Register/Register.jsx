@@ -44,7 +44,7 @@ const Register = () => {
                             password: newPass // Ensure this matches backend field
                         };
 
-                        axiosPublic.post('http://localhost:5000/register', userInfo)
+                        axiosPublic.post('http://localhost:5000/request', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
                                     navigate(location?.state ? location.state : '/');

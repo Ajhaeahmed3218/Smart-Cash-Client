@@ -4,7 +4,7 @@ import Navbar from "../shared/Navbar";
 
 const Main = () => {
     return (
-        <div>
+        <div className="bg-[#e4e8f3]">
             <Navbar />
             <Outlet />
         </div>
