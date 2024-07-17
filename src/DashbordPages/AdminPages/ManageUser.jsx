@@ -3,6 +3,7 @@ import useAllRequest from "../../Hooks/useAllRequest";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/axiosPublic";
+import axios from "axios";
 
 
 const ManageUser = () => {
@@ -18,7 +19,7 @@ const ManageUser = () => {
             data.tk = 40;  // Add new field 'tk' with value 40
             console.log(data, 'user');
 
-            axiosPublic.post('http://localhost:5000/register', data)
+            axios.post('http://localhost:5000/register', data, { withCredentials: true })
                 .then(res => {
                     if (res.data.insertedId) {
                         refetch()
@@ -43,7 +44,7 @@ const ManageUser = () => {
         } else {
             data.tk = 10000;
             console.log(data, 'Agent');
-            axiosPublic.post('http://localhost:5000/register', data)
+            axios.post('http://localhost:5000/register', data, { withCredentials: true })
                 .then(res => {
                     if (res.data.insertedId) {
                         refetch()
